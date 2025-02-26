@@ -2,10 +2,22 @@
 
 <ul class="list-unstyled">
   <% @restaurants.each do |restaurant| %>
-    <li class="card mb-3 p-3 shadow-sm">
-      <p><strong>Name:</strong> <%= restaurant.name %></p>
-      <p><strong>Address:</strong> <%= restaurant.address %></p>
-      <p><strong>Category:</strong> <%= restaurant.category %></p>
-    </li>
+    <%= link_to restaurant_path(restaurant) do  %>
+      <li class="card mb-3 p-3 shadow-sm">
+        <p><strong>Name:</strong> <%= restaurant.name %></p>
+        <p><strong>Address:</strong> <%= restaurant.address %></p>
+        <p><strong>Telephone:</strong> <%= restaurant.phone_number %></p>
+        <p><strong>Category:</strong> <%= restaurant.category %></p>
+
+        <% if restaurant.reviews.any? %>
+          <% restaurant.reviews.each do |review| %>
+            <p class="mb-0"><strong>Rating:</strong> <%= "⭐️" * review.rating %></p>
+          <% end %>
+        <% else %>
+          <p>No reviews yet.</p>
+        <% end %>
+
+      </li>
+    <% end %>
   <% end %>
 </ul>
