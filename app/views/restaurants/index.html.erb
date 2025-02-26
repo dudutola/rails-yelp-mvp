@@ -1,5 +1,7 @@
 <h1 class="text-center my-4">Restaurants</h1>
 
+<%= link_to "New Restaurant", new_restaurant_path, class: "btn btn-primary mb-4" %>
+
 <ul class="list-unstyled">
   <% @restaurants.each do |restaurant| %>
     <%= link_to restaurant_path(restaurant) do  %>
