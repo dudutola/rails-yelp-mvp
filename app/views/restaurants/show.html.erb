@@ -9,6 +9,8 @@
 
 <h2>Reviews:</h2>
 
+<%= link_to "New Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary mb-4" %>
+
 <% if @restaurant.reviews.any? %>
   <ul class="list-unstyled">
     <%  @restaurant.reviews.each do |review| %>

@@ -10,15 +10,6 @@
         <p><strong>Address:</strong> <%= restaurant.address %></p>
         <p><strong>Telephone:</strong> <%= restaurant.phone_number %></p>
         <p><strong>Category:</strong> <%= restaurant.category %></p>
-
-        <% if restaurant.reviews.any? %>
-          <% restaurant.reviews.each do |review| %>
-            <p class="mb-0"><strong>Rating:</strong> <%= "⭐️" * review.rating %></p>
-          <% end %>
-        <% else %>
-          <p>No reviews yet.</p>
-        <% end %>
-
       </li>
     <% end %>
   <% end %>
