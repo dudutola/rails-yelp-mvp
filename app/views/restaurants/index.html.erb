@@ -1,0 +1,11 @@
+<h1 class="text-center my-4">Restaurants</h1>
+
+<ul class="list-unstyled">
+  <% @restaurants.each do |restaurant| %>
+    <li class="card mb-3 p-3 shadow-sm">
+      <p><strong>Name:</strong> <%= restaurant.name %></p>
+      <p><strong>Address:</strong> <%= restaurant.address %></p>
+      <p><strong>Category:</strong> <%= restaurant.category %></p>
+    </li>
+  <% end %>
+</ul>
