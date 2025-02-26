@@ -26,6 +26,11 @@
   </head>
 
   <body>
+    <nav class="d-flex justify-content-between navbar navbar-expand-lg  navbar-light bg-light px-3">
+      <%= link_to "Restaurants", restaurants_path, class: "text-decoration-none navbar-brand" %>
+      <%= link_to "Add Restaurant", new_restaurant_path, class: "text-decoration-none btn btn-primary" %>
+    </nav>
+
     <div class="container mt-5">
       <%= yield %>
     </div>
