@@ -9,20 +9,27 @@
 
 <h2>Reviews:</h2>
 
-<%= link_to "New Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary mb-4" %>
-
 <% if @restaurant.reviews.any? %>
   <ul class="list-unstyled">
     <%  @restaurant.reviews.each do |review| %>
-      <li class="card mb-3 p-3 shadow-sm">
-        <p class="mb-0"><strong>Rating:</strong> <%= "⭐️" * review.rating %></p>
-        </p>
-        <p class="mb-0"><strong>Content:</strong> <%= review.content %></p>
-      </li>
+      <% if review.rating.present? && review.content.present? %>
+        <li class="card mb-3 p-3 shadow-sm">
+          <p class="mb-0"><strong>Rating:</strong> <%= "⭐️" * review.rating.to_i %></p>
+          <p class="mb-0"><strong>Content:</strong> <%= review.content %></p>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 <% else %>
   <p>No reviews yet.</p>
+<% end %>
+
+<h3>New review</h3>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
 <% end %>
 
 <%= link_to "Home", restaurants_path %>

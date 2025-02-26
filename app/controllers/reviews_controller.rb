@@ -1,18 +1,14 @@
 class ReviewsController < ApplicationController
-  before_action :set_restaurant, only: [ :new, :create ]
-
-  def new
-    @review = Review.new
-  end
+  before_action :set_restaurant, only: [ :create ]
 
   def create
     @review = Review.new(review_params)
     @review.restaurant = @restaurant
 
     if @review.save
-      redirect_to @restaurant
+      redirect_to @restaurant, notice: "Review added successfully!"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to @restaurant, alert: "There was an error adding your review."
     end
   end
 
